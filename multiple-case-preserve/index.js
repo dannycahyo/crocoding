@@ -10,6 +10,8 @@ if (isItOkayToMisuh) {
   misuhType = "Javanese";
 }
 
+howToMoveOnAfterBreakUp();
+
 console.log(howToMoveOnAfterBreakUp());
 
 // lower case
