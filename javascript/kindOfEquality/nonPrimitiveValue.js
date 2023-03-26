@@ -13,8 +13,8 @@ cherry = {};
 // ARRAY
 console.log([] === []);
 const students = ["Danny", "Denny", "Donny"];
-const dStudents = ["Danny", "Denny", "Donny"];
-console.log(students === dStudents);
+const students2 = ["Danny", "Denny", "Donny"];
+console.log(students === students2);
 
 // Function
 let foo = function () {

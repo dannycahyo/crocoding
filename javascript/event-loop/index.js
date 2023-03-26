@@ -2,7 +2,7 @@ function printHello() {
   console.log("Hello");
 }
 
-function sayMeFirst() {
+function printMeFirst() {
   console.log("Me First!");
 }
 
@@ -10,14 +10,12 @@ function printHi() {
   console.log("Hi");
 }
 
-function saySecondFirst() {
-  console.log("Second First!");
+function printGoodBye() {
+  console.log("GoodBye!");
 }
 
-setTimeout(printHi, 0);
+setTimeout(printHello, 0);
 
-sayMeFirst();
+printMeFirst();
 
-setTimeout(printHello, 1000);
-
-saySecondFirst();
+setTimeout(printHi, 1000);

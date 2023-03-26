@@ -1,14 +1,9 @@
-// Check a number is even or odd number
-function isEvenOrOdd(number) {
-  if (number % 2 === 0) {
-    return "even";
-  } else {
-    return "odd";
-  }
-}
+// ========== CASE 1 ==========
 
-function sumListOfNumbers(numbers) {
-  return numbers.reduce((a, b) => a + b, 0);
-}
+// Check a number is even or odd
 
-function calculateDaysBetweenDates(beginDate, endDate) {}
+// ========== CASE 2 ==========
+
+// function sumListOfNumbers
+
+// function calculateDaysBetweenDates
