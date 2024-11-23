@@ -1,15 +1,17 @@
-
-# Build stage
-FROM node:20 AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-
-# Final stage
-FROM node:20-alpine
-WORKDIR /app
-COPY --from=builder /app/node_modules ./node_modules
+# build stage
+FROM node:20 AS node-builder
+RUN mkdir /build
+WORKDIR /build
+COPY package-lock.json package.json ./
+RUN npm ci
 COPY . .
 
-EXPOSE 3000
+# runtime stage
+FROM alpine:3.19
+RUN apk add --update nodejs
+RUN addgroup -S node && adduser -S node -G node
+USER node
+RUN mkdir /home/node/code
+WORKDIR /home/node/code
+COPY --from=node-builder --chown=node:node /build .
 CMD ["node", "index.js"]
