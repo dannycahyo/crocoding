@@ -3,7 +3,7 @@ FROM node:20 AS node-builder
 RUN mkdir /build
 WORKDIR /build
 COPY package-lock.json package.json ./
-RUN npm ci
+RUN npm ci --only=production
 COPY . .
 
 # runtime stage
