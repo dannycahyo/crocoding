@@ -5,34 +5,31 @@ function runBadPractice() {
   const start = performance.now();
   const boxes = document.querySelectorAll("#badPractice .box");
 
-  // Repeat the operation multiple times to make the difference more noticeable
-  for (let iteration = 0; iteration < 10; iteration++) {
-    boxes.forEach((box) => {
-      // Force reflow with height
-      const height = box.offsetHeight;
-      box.style.height = height + 2 + "px";
+  boxes.forEach((box) => {
+    // Force reflow with height
+    const height = box.offsetHeight;
+    box.style.height = height + 2 + "px";
 
-      // Force reflow with width
-      const width = box.offsetWidth;
-      box.style.width = width + 2 + "px";
+    // Force reflow with width
+    const width = box.offsetWidth;
+    box.style.width = width + 2 + "px";
 
-      // Force reflow with margin
-      const margin = parseInt(getComputedStyle(box).marginTop);
-      box.style.marginTop = margin + 1 + "px";
+    // Force reflow with margin
+    const margin = parseInt(getComputedStyle(box).marginTop);
+    box.style.marginTop = margin + 1 + "px";
 
-      // Force reflow with padding
-      const padding = parseInt(getComputedStyle(box).paddingLeft);
-      box.style.padding = padding + 1 + "px";
+    // Force reflow with padding
+    const padding = parseInt(getComputedStyle(box).paddingLeft);
+    box.style.padding = padding + 1 + "px";
 
-      // Force reflow with border
-      const border = parseInt(getComputedStyle(box).borderWidth || 0);
-      box.style.border = border + 1 + "px solid #999";
+    // Force reflow with border
+    const border = parseInt(getComputedStyle(box).borderWidth || 0);
+    box.style.border = border + 1 + "px solid #999";
 
-      // Force reflow with font size
-      const fontSize = parseInt(getComputedStyle(box).fontSize);
-      box.style.fontSize = fontSize + 1 + "px";
-    });
-  }
+    // Force reflow with font size
+    const fontSize = parseInt(getComputedStyle(box).fontSize);
+    box.style.fontSize = fontSize + 1 + "px";
+  });
 
   const duration = performance.now() - start;
   metrics.textContent = `Bad Practice: ${duration.toFixed(2)}ms`;
