@@ -18,19 +18,23 @@ export async function action({ request }: Route.ActionArgs) {
 
 export default function DevLogin() {
   return (
-    <main className="mx-auto max-w-sm p-8">
-      <h1 className="mb-6 text-xl font-semibold">Billing Demo</h1>
-      <p className="mb-4 text-sm text-neutral-500">
-        Dev-only: logs in as the seeded demo user.
+    <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center px-6 py-12">
+      <p className="mb-8 text-center text-sm font-medium tracking-wide text-neutral-400">
+        Billing Demo
       </p>
-      <Form method="post">
-        <button
-          className="w-full rounded bg-neutral-900 py-2 text-white"
-          type="submit"
-        >
-          Log in as demo user
-        </button>
-      </Form>
+      <div className="rounded-2xl border border-dashed border-neutral-300 bg-white p-8 dark:border-neutral-700 dark:bg-neutral-900">
+        <p className="mb-4 text-sm text-neutral-500">
+          Dev-only: logs in as the seeded demo user.
+        </p>
+        <Form method="post">
+          <button
+            className="w-full rounded-lg bg-neutral-900 py-3 text-sm font-medium text-white transition hover:bg-neutral-700 dark:bg-white dark:text-neutral-900"
+            type="submit"
+          >
+            Log in as demo user
+          </button>
+        </Form>
+      </div>
     </main>
   );
 }
