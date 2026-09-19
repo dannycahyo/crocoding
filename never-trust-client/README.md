@@ -16,19 +16,32 @@ seeds the session for the demo user).
 
 ## The two versions
 
-Tagged commits on `master`:
+Two tags, each on its own commit history:
 
 - `v1-vulnerable` — `/checkout`'s action trusts `amount`, `userId`,
   and `planName` straight from the request body.
-- `v2-fixed` — the action derives the user from the session and the
-  price from the stored plan; the client can only choose which plan.
+- `v2-fixed` (tip of `master`) — the action derives the user from the
+  session and the price from the stored plan; the client can only
+  choose which plan.
 
 Switch between them:
 
 ```bash
-git checkout v1-vulnerable
-git checkout v2-fixed
+git checkout v1-vulnerable   # detached HEAD — read-only, for the demo
+npm run reset
+npm run dev
+
+# back to the fixed version / master
+git checkout master
+npm run reset
+npm run dev
 ```
+
+`git checkout v1-vulnerable` leaves you in detached HEAD — expected,
+since that tag isn't on `master`'s line. Don't commit there; switch
+back to `master` first if you want to make changes. Restart
+`npm run dev` after switching (HMR won't reliably reflect a checkout)
+and always `npm run reset` afterward so `data/db.json` starts clean.
 
 ## Reset between takes
 
