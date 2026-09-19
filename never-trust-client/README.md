@@ -41,3 +41,11 @@ npm run reset
 ```
 
 Run this before each take/recording.
+
+## Out of scope
+
+`/payment/:orderId` and `/dev/login` have no auth/ownership checks —
+anyone with an order ID can view or mark it paid. This is intentional:
+the demo's single lesson is `/checkout`'s trust boundary on
+`amount`/`userId`/`planName`, and widening scope to other routes
+would dilute that. Don't mistake the omission for an oversight.
