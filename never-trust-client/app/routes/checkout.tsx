@@ -1,7 +1,8 @@
 import { redirect, useFetcher } from "react-router";
 import type { Route } from "./+types/checkout";
-import { plansTable } from "~/lib/plans";
+import { plansTable, getPlan } from "~/lib/plans";
 import { createOrder } from "~/lib/orders";
+import { requireUserId } from "~/lib/session";
 import { formatIDR } from "~/lib/format";
 
 export async function loader() {
@@ -10,11 +11,13 @@ export async function loader() {
 }
 
 export async function action({ request }: Route.ActionArgs) {
-  const { amount, userId, planName } = await request.json();
+  const { planId } = await request.json();
+  const userId = await requireUserId(request);
+  const plan = await getPlan(planId);
   const order = await createOrder({
     userId,
-    planId: planName,
-    amount,
+    planId: plan.id,
+    amount: plan.price,
   });
   return redirect(`/payment/${order.id}`);
 }
@@ -36,7 +39,7 @@ export default function Checkout({ loaderData }: Route.ComponentProps) {
           className="mt-6 w-full rounded bg-neutral-900 py-2 text-white"
           onClick={() =>
             fetcher.submit(
-              { amount: plan.price, userId: "u_1", planName: plan.id },
+              { planId: plan.id },
               { method: "post", encType: "application/json" },
             )
           }
