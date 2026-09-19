@@ -1,0 +1,5 @@
+{
+  "user": { "id": "u_1", "email": "demo@example.com", "isPremium": false },
+  "plans": [{ "id": "pro_monthly", "name": "Pro", "price": 29000 }],
+  "orders": []
+}
